@@ -181,7 +181,7 @@ public class HelloArActivity extends AppCompatActivity implements SampleRender.R
 
   String texturename;
   String virtualObjectTextureDir;
-  Random rng = new Random();
+  private Random rng = new Random();
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -203,7 +203,6 @@ public class HelloArActivity extends AppCompatActivity implements SampleRender.R
     instantPlacementSettings.onCreate(this);
 
     Intent intent = new Intent(this, HelloArActivity.class);
-    rollDice();
     Button rollingButton = findViewById(R.id.buttonroll);
 
     rollingButton.setOnClickListener(new View.OnClickListener() {
@@ -415,6 +414,7 @@ public class HelloArActivity extends AppCompatActivity implements SampleRender.R
           new Mesh(
               render, Mesh.PrimitiveMode.POINTS, /*indexBuffer=*/ null, pointCloudVertexBuffers);
 
+      rollDice();
       // Virtual object to render (ARCore pawn)
       virtualObjectAlbedoTexture =
           Texture.createFromAsset(
